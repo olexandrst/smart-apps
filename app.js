@@ -12,7 +12,7 @@ const aiApps = [
         name: 'Smart People',
         category: 'learning',
         description: 'Бізнес-школа в м. Рівне - навчання та розвиток',
-        url: 'https://smartpeople.org.ua',
+        url: 'https://smartpeople.ua/',
         icon: '🎓'
     },
     {
@@ -404,6 +404,13 @@ const aiApps = [
         description: 'Онлайн IDE з AI-помічником',
         url: 'https://replit.com',
         icon: '💻'
+    },
+    {
+        name: 'LM Studio',
+        category: 'other',
+        description: 'Локальний запуск великих мовних моделей',
+        url: 'https://lmstudio.ai',
+        icon: '🖥️'
     }
 ];
 

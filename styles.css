@@ -5,16 +5,17 @@
 }
 
 :root {
-    --primary-color: #E84545;
+    --primary-color: #f44336;
     --secondary-color: #FF6B6B;
-    --bg-color: #2C3E50;
+    --bg-color: #FFFFFF;
     --card-bg: #34495E;
     --text-color: #FFFFFF;
     --text-muted: #BDC3C7;
+    --text-dark: #2C3E50;
     --border-color: #445566;
     --hover-color: #C62828;
-    --gradient: linear-gradient(135deg, #E84545 0%, #C62828 100%);
-    --accent-red: #E84545;
+    --gradient: linear-gradient(135deg, #f44336 0%, #C62828 100%);
+    --accent-red: #f44336;
 }
 
 body {
@@ -38,14 +39,14 @@ header {
 
 h1 {
     font-size: 3rem;
-    color: var(--text-color);
+    color: var(--text-dark);
     margin-bottom: 0.5rem;
     font-weight: 700;
     letter-spacing: -1px;
 }
 
 .subtitle {
-    color: var(--text-muted);
+    color: #666;
     font-size: 1.2rem;
     margin-bottom: 2rem;
 }
@@ -58,10 +59,10 @@ h1 {
 #searchInput {
     width: 100%;
     padding: 1rem 1.5rem;
-    background: var(--card-bg);
-    border: 2px solid var(--border-color);
+    background: #f5f5f5;
+    border: 2px solid #ddd;
     border-radius: 50px;
-    color: var(--text-color);
+    color: var(--text-dark);
     font-size: 1rem;
     outline: none;
     transition: all 0.3s ease;
@@ -69,11 +70,11 @@ h1 {
 
 #searchInput:focus {
     border-color: var(--accent-red);
-    box-shadow: 0 0 0 3px rgba(232, 69, 69, 0.1);
+    box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.1);
 }
 
 #searchInput::placeholder {
-    color: var(--text-muted);
+    color: #999;
 }
 
 .filter-buttons {
@@ -86,10 +87,10 @@ h1 {
 
 .filter-btn {
     padding: 0.75rem 1.5rem;
-    background: var(--card-bg);
-    border: 2px solid var(--border-color);
+    background: #f5f5f5;
+    border: 2px solid #ddd;
     border-radius: 25px;
-    color: var(--text-color);
+    color: var(--text-dark);
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -97,7 +98,7 @@ h1 {
 
 .filter-btn:hover {
     border-color: var(--accent-red);
-    background: rgba(232, 69, 69, 0.1);
+    background: rgba(244, 67, 54, 0.1);
     transform: translateY(-2px);
 }
 
@@ -105,7 +106,7 @@ h1 {
     background: var(--accent-red);
     border-color: var(--accent-red);
     color: white;
-    box-shadow: 0 4px 15px rgba(232, 69, 69, 0.3);
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
 }
 
 #appsContainer {
@@ -156,8 +157,8 @@ h1 {
 .app-card:hover {
     transform: translateY(-5px);
     border-color: var(--accent-red);
-    box-shadow: 0 10px 30px rgba(232, 69, 69, 0.3);
-    background: var(--bg-color);
+    box-shadow: 0 10px 30px rgba(244, 67, 54, 0.3);
+    background: #f9f9f9;
 }
 
 .app-icon {
@@ -167,10 +168,10 @@ h1 {
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-    background: var(--accent-red);
-    border-radius: 15px;
+    background: linear-gradient(135deg, #f44336 0%, #c62828 100%);
+    border-radius: 20px;
     padding: 1rem;
-    box-shadow: 0 4px 10px rgba(232, 69, 69, 0.2);
+    box-shadow: 0 4px 10px rgba(244, 67, 54, 0.2);
 }
 
 .app-icon img {
@@ -203,8 +204,8 @@ h1 {
 footer {
     text-align: center;
     padding: 2rem 0;
-    color: var(--text-muted);
-    border-top: 1px solid var(--border-color);
+    color: #666;
+    border-top: 1px solid #ddd;
     margin-top: 3rem;
 }
 
@@ -230,6 +231,21 @@ footer p {
 .footer-link strong {
     font-weight: 700;
     letter-spacing: 1px;
+}
+
+.footer-link-inline {
+    color: var(--accent-red);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-link-inline:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+.footer-link-inline strong {
+    font-weight: 700;
 }
 
 .hidden {
