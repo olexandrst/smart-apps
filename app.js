@@ -5,71 +5,70 @@ const aiApps = [
         category: 'learning',
         description: 'Експерт з ШІ, викладач курсу "ШІ для бізнесу"',
         url: 'https://www.linkedin.com/in/alex-stasuk-2ba761148',
-        image: 'assets/images/alex-stasuk.jpg',
-        icon: '👨‍🏫'
+        logo: 'assets/images/alex-stasuk.jpg'
     },
     {
         name: 'Smart People',
         category: 'learning',
         description: 'Бізнес-школа в м. Рівне - навчання та розвиток',
         url: 'https://smartpeople.ua/',
-        icon: '🎓'
+        logo: 'https://logo.clearbit.com/smartpeople.ua'
     },
     {
         name: 'Google Teachable Machine',
         category: 'learning',
         description: 'Навчання ML-моделей без коду - ідеально для початківців',
         url: 'https://teachablemachine.withgoogle.com',
-        icon: '🤖'
+        logo: 'https://logo.clearbit.com/google.com'
     },
     {
         name: 'Elements of AI',
         category: 'learning',
         description: 'Безкоштовний курс основ ШІ для всіх',
         url: 'https://www.elementsofai.com',
-        icon: '📚'
+        logo: 'https://logo.clearbit.com/elementsofai.com'
     },
     {
         name: 'Kaggle Learn',
         category: 'learning',
         description: 'Практичні мікрокурси з ML та Data Science',
         url: 'https://www.kaggle.com/learn',
-        icon: '📊'
+        logo: 'https://logo.clearbit.com/kaggle.com'
     },
     {
         name: 'Fast.ai',
         category: 'learning',
         description: 'Практичне навчання deep learning для всіх',
         url: 'https://www.fast.ai',
-        icon: '⚡'
+        logo: 'https://logo.clearbit.com/fast.ai'
     },
     {
         name: 'DeepLearning.AI',
         category: 'learning',
         description: 'Курси від Andrew Ng - від основ до практики',
         url: 'https://www.deeplearning.ai',
-        icon: '🧠'
+        logo: 'https://logo.clearbit.com/deeplearning.ai'
     },
     {
         name: 'Hugging Face Learn',
         category: 'learning',
         description: 'Курси з NLP та трансформерів',
         url: 'https://huggingface.co/learn',
-        icon: '🤗'
+        logo: 'https://logo.clearbit.com/huggingface.co'
     },
     {
         name: 'Google AI Hub',
         category: 'learning',
         description: 'Навчальні матеріали та ресурси від Google',
         url: 'https://ai.google/education',
-        icon: '🎯'
+        logo: 'https://logo.clearbit.com/google.com'
     },
     {
         name: 'Microsoft AI School',
         category: 'learning',
         description: 'Освітні ресурси з AI від Microsoft',
         url: 'https://www.microsoft.com/ai/ai-school',
-        icon: '🏫'
+        logo: 'https://logo.clearbit.com/microsoft.com'
     },
 
     // Чат-боти
@@ -78,49 +77,49 @@ const aiApps = [
         category: 'chatbots',
         description: 'Потужний AI-асистент від Anthropic для складних завдань',
         url: 'https://claude.ai',
-        icon: '🤖'
+        logo: 'https://logo.clearbit.com/anthropic.com'
     },
     {
         name: 'ChatGPT',
         category: 'chatbots',
         description: 'Популярний AI-чатбот від OpenAI',
         url: 'https://chat.openai.com',
-        icon: '💬'
+        logo: 'https://logo.clearbit.com/openai.com'
     },
     {
         name: 'Gemini',
         category: 'chatbots',
         description: 'AI-асистент від Google',
         url: 'https://gemini.google.com',
-        icon: '✨'
+        logo: 'https://logo.clearbit.com/google.com'
     },
     {
         name: 'Grok',
         category: 'chatbots',
         description: 'AI від X/Twitter з доступом до реальних даних',
         url: 'https://grok.x.ai',
-        icon: '🚀'
+        logo: 'https://logo.clearbit.com/x.ai'
     },
     {
         name: 'Copilot',
         category: 'chatbots',
         description: 'AI-помічник від Microsoft',
         url: 'https://copilot.microsoft.com',
-        icon: '🎯'
+        logo: 'https://logo.clearbit.com/microsoft.com'
     },
     {
         name: 'Google AI Studio',
         category: 'chatbots',
         description: 'Експериментуйте з Google Gemini API',
         url: 'https://aistudio.google.com',
-        icon: '🔬'
+        logo: 'https://logo.clearbit.com/google.com'
     },
     {
         name: 'Poe',
         category: 'chatbots',
         description: 'Доступ до різних AI-моделей в одному місці',
         url: 'https://poe.com',
-        icon: '🎪'
+        logo: 'https://logo.clearbit.com/poe.com'
     },
 
     // Автоматизація
@@ -129,28 +128,28 @@ const aiApps = [
         category: 'automation',
         description: 'Автоматизація робочих процесів та інтеграції',
         url: 'https://zapier.com',
-        icon: '⚡'
+        logo: 'https://logo.clearbit.com/zapier.com'
     },
     {
         name: 'Make',
         category: 'automation',
         description: 'Візуальна платформа автоматизації (Integromat)',
         url: 'https://make.com',
-        icon: '🔗'
+        logo: 'https://logo.clearbit.com/make.com'
     },
     {
         name: 'Botpress',
         category: 'automation',
         description: 'Створення чат-ботів та автоматизація',
         url: 'https://botpress.com',
-        icon: '🤖'
+        logo: 'https://logo.clearbit.com/botpress.com'
     },
     {
         name: 'n8n',
         category: 'automation',
         description: 'Open-source автоматизація робочих процесів',
         url: 'https://n8n.io',
-        icon: '🔄'
+        logo: 'https://logo.clearbit.com/n8n.io'
     },
 
     // Мультимедіа - Зображення
@@ -160,7 +159,7 @@ const aiApps = [
         subcategory: 'images',
         description: 'Редактор AI-зображень та генерація арту',
         url: 'https://openart.ai',
-        icon: '🎨'
+        logo: 'https://logo.clearbit.com/openart.ai'
     },
     {
         name: 'Midjourney',
@@ -168,7 +167,7 @@ const aiApps = [
         subcategory: 'images',
         description: 'Генерація високоякісних AI-зображень',
         url: 'https://www.midjourney.com',
-        icon: '🖼️'
+        logo: 'https://logo.clearbit.com/midjourney.com'
     },
     {
         name: 'DALL-E',
@@ -176,7 +175,7 @@ const aiApps = [
         subcategory: 'images',
         description: 'Генерація зображень від OpenAI',
         url: 'https://openai.com/dall-e',
-        icon: '🎭'
+        logo: 'https://logo.clearbit.com/openai.com'
     },
     {
         name: 'Momoai',
@@ -184,7 +183,7 @@ const aiApps = [
         subcategory: 'images',
         description: 'Генерація фото та портретів',
         url: 'https://momoai.co',
-        icon: '📸'
+        logo: 'https://logo.clearbit.com/momoai.co'
     },
     {
         name: 'Let\'s Enhance',
@@ -192,7 +191,7 @@ const aiApps = [
         subcategory: 'images',
         description: 'Покращення якості та реставрація зображень',
         url: 'https://letsenhance.io',
-        icon: '✨'
+        logo: 'https://logo.clearbit.com/letsenhance.io'
     },
     {
         name: 'Remove.bg',
@@ -200,7 +199,7 @@ const aiApps = [
         subcategory: 'images',
         description: 'Видалення фону з зображень',
         url: 'https://remove.bg',
-        icon: '🗑️'
+        logo: 'https://logo.clearbit.com/remove.bg'
     },
     {
         name: 'Stable Diffusion',
@@ -208,7 +207,7 @@ const aiApps = [
         subcategory: 'images',
         description: 'Open-source генерація зображень',
         url: 'https://stablediffusionweb.com',
-        icon: '🌈'
+        logo: 'https://logo.clearbit.com/stability.ai'
     },
 
     // Мультимедіа - 3D
@@ -218,7 +217,7 @@ const aiApps = [
         subcategory: '3d',
         description: '3D моделювання та генерація мешів',
         url: 'https://meshy.ai',
-        icon: '🧊'
+        logo: 'https://logo.clearbit.com/meshy.ai'
     },
     {
         name: 'Luma AI',
@@ -226,7 +225,7 @@ const aiApps = [
         subcategory: '3d',
         description: 'Створення 3D моделей з фото',
         url: 'https://lumalabs.ai',
-        icon: '📦'
+        logo: 'https://logo.clearbit.com/lumalabs.ai'
     },
     {
         name: 'Spline AI',
@@ -234,7 +233,7 @@ const aiApps = [
         subcategory: '3d',
         description: '3D дизайн з AI-асистентом',
         url: 'https://spline.design',
-        icon: '🎲'
+        logo: 'https://logo.clearbit.com/spline.design'
     },
 
     // Мультимедіа - Відео
@@ -244,7 +243,7 @@ const aiApps = [
         subcategory: 'video',
         description: 'Генерація відео з AI-аватарами',
         url: 'https://synthesia.io',
-        icon: '🎬'
+        logo: 'https://logo.clearbit.com/synthesia.io'
     },
     {
         name: 'Runway',
@@ -252,7 +251,7 @@ const aiApps = [
         subcategory: 'video',
         description: 'AI-інструменти для відеомонтажу',
         url: 'https://runwayml.com',
-        icon: '🎥'
+        logo: 'https://logo.clearbit.com/runwayml.com'
     },
     {
         name: 'HeyGen',
@@ -260,7 +259,7 @@ const aiApps = [
         subcategory: 'video',
         description: 'Створення відео з AI-аватарами',
         url: 'https://heygen.com',
-        icon: '🎞️'
+        logo: 'https://logo.clearbit.com/heygen.com'
     },
     {
         name: 'Pika',
@@ -268,7 +267,7 @@ const aiApps = [
         subcategory: 'video',
         description: 'Генерація відео з тексту',
         url: 'https://pika.art',
-        icon: '📹'
+        logo: 'https://logo.clearbit.com/pika.art'
     },
 
     // Мультимедіа - Аудіо
@@ -278,7 +277,7 @@ const aiApps = [
         subcategory: 'audio',
         description: 'Генерація голосу та озвучка',
         url: 'https://elevenlabs.io',
-        icon: '🎙️'
+        logo: 'https://logo.clearbit.com/elevenlabs.io'
     },
     {
         name: 'Murf AI',
@@ -286,7 +285,7 @@ const aiApps = [
         subcategory: 'audio',
         description: 'Професійна AI-озвучка',
         url: 'https://murf.ai',
-        icon: '🔊'
+        logo: 'https://logo.clearbit.com/murf.ai'
     },
     {
         name: 'Suno',
@@ -294,7 +293,7 @@ const aiApps = [
         subcategory: 'audio',
         description: 'Генерація музики та пісень',
         url: 'https://suno.ai',
-        icon: '🎵'
+        logo: 'https://logo.clearbit.com/suno.ai'
     },
 
     // Бізнес
@@ -303,49 +302,49 @@ const aiApps = [
         category: 'business',
         description: 'Розумний пошук з AI',
         url: 'https://perplexity.ai',
-        icon: '🔍'
+        logo: 'https://logo.clearbit.com/perplexity.ai'
     },
     {
         name: 'XMind',
         category: 'business',
         description: 'Інтелектуальні карти та мозковий штурм',
         url: 'https://xmind.ai',
-        icon: '🧠'
+        logo: 'https://logo.clearbit.com/xmind.ai'
     },
     {
         name: 'Notion AI',
         category: 'business',
         description: 'AI-асистент для продуктивності',
         url: 'https://notion.so',
-        icon: '📝'
+        logo: 'https://logo.clearbit.com/notion.so'
     },
     {
         name: 'Fireflies.ai',
         category: 'business',
         description: 'Транскрипція зустрічей та нотатки',
         url: 'https://fireflies.ai',
-        icon: '🎤'
+        logo: 'https://logo.clearbit.com/fireflies.ai'
     },
     {
         name: 'Otter.ai',
         category: 'business',
         description: 'Транскрипція та нотатки для зустрічей',
         url: 'https://otter.ai',
-        icon: '🦦'
+        logo: 'https://logo.clearbit.com/otter.ai'
     },
     {
         name: 'Jasper',
         category: 'business',
         description: 'AI-копірайтинг для бізнесу',
         url: 'https://jasper.ai',
-        icon: '✍️'
+        logo: 'https://logo.clearbit.com/jasper.ai'
     },
     {
         name: 'Copy.ai',
         category: 'business',
         description: 'Генерація маркетингових текстів',
         url: 'https://copy.ai',
-        icon: '📄'
+        logo: 'https://logo.clearbit.com/copy.ai'
     },
 
     // Інше
@@ -354,63 +353,63 @@ const aiApps = [
         category: 'other',
         description: 'Платформа для ML-моделей та датасетів',
         url: 'https://huggingface.co',
-        icon: '🤗'
+        logo: 'https://logo.clearbit.com/huggingface.co'
     },
     {
         name: 'Replicate',
         category: 'other',
         description: 'Запуск AI-моделей через API',
         url: 'https://replicate.com',
-        icon: '🔄'
+        logo: 'https://logo.clearbit.com/replicate.com'
     },
     {
         name: 'GitHub Copilot',
         category: 'other',
         description: 'AI-асистент для програмування',
         url: 'https://github.com/features/copilot',
-        icon: '👨‍💻'
+        logo: 'https://logo.clearbit.com/github.com'
     },
     {
         name: 'Cursor',
         category: 'other',
         description: 'IDE з вбудованим AI',
         url: 'https://cursor.sh',
-        icon: '⌨️'
+        logo: 'https://logo.clearbit.com/cursor.sh'
     },
     {
         name: 'Grammarly',
         category: 'other',
         description: 'AI-помічник для письма',
         url: 'https://grammarly.com',
-        icon: '📚'
+        logo: 'https://logo.clearbit.com/grammarly.com'
     },
     {
         name: 'Canva AI',
         category: 'other',
         description: 'Дизайн з AI-інструментами',
         url: 'https://canva.com',
-        icon: '🎨'
+        logo: 'https://logo.clearbit.com/canva.com'
     },
     {
         name: 'Framer AI',
         category: 'other',
         description: 'Веб-дизайн з AI',
         url: 'https://framer.com',
-        icon: '🖥️'
+        logo: 'https://logo.clearbit.com/framer.com'
     },
     {
         name: 'Replit AI',
         category: 'other',
         description: 'Онлайн IDE з AI-помічником',
         url: 'https://replit.com',
-        icon: '💻'
+        logo: 'https://logo.clearbit.com/replit.com'
     },
     {
         name: 'LM Studio',
         category: 'other',
         description: 'Локальний запуск великих мовних моделей',
         url: 'https://lmstudio.ai',
-        icon: '🖥️'
+        logo: 'https://logo.clearbit.com/lmstudio.ai'
     }
 ];
 
@@ -491,19 +490,13 @@ function createAppCard(app) {
     const icon = document.createElement('div');
     icon.className = 'app-icon';
 
-    // Підтримка як зображень так і емоджі
-    if (app.image) {
+    // Використовуємо логотипи замість емоджі
+    if (app.logo) {
         const img = document.createElement('img');
-        img.src = app.image;
+        img.src = app.logo;
         img.alt = app.name;
-        img.onerror = function() {
-            // Якщо зображення не завантажилось, показуємо емоджі
-            this.style.display = 'none';
-            icon.textContent = app.icon;
-        };
+        img.loading = 'lazy';
         icon.appendChild(img);
-    } else {
-        icon.textContent = app.icon;
     }
 
     const name = document.createElement('div');
