@@ -1,4 +1,77 @@
 const aiApps = [
+    // Навчання
+    {
+        name: 'Алекс Стасюк',
+        category: 'learning',
+        description: 'Експерт з ШІ, викладач курсу "ШІ для бізнесу"',
+        url: 'https://www.linkedin.com/in/alex-stasuk-2ba761148',
+        image: 'assets/images/alex-stasuk.jpg',
+        icon: '👨‍🏫'
+    },
+    {
+        name: 'Smart People',
+        category: 'learning',
+        description: 'Бізнес-школа в м. Рівне - навчання та розвиток',
+        url: 'https://smartpeople.org.ua',
+        icon: '🎓'
+    },
+    {
+        name: 'Google Teachable Machine',
+        category: 'learning',
+        description: 'Навчання ML-моделей без коду - ідеально для початківців',
+        url: 'https://teachablemachine.withgoogle.com',
+        icon: '🤖'
+    },
+    {
+        name: 'Elements of AI',
+        category: 'learning',
+        description: 'Безкоштовний курс основ ШІ для всіх',
+        url: 'https://www.elementsofai.com',
+        icon: '📚'
+    },
+    {
+        name: 'Kaggle Learn',
+        category: 'learning',
+        description: 'Практичні мікрокурси з ML та Data Science',
+        url: 'https://www.kaggle.com/learn',
+        icon: '📊'
+    },
+    {
+        name: 'Fast.ai',
+        category: 'learning',
+        description: 'Практичне навчання deep learning для всіх',
+        url: 'https://www.fast.ai',
+        icon: '⚡'
+    },
+    {
+        name: 'DeepLearning.AI',
+        category: 'learning',
+        description: 'Курси від Andrew Ng - від основ до практики',
+        url: 'https://www.deeplearning.ai',
+        icon: '🧠'
+    },
+    {
+        name: 'Hugging Face Learn',
+        category: 'learning',
+        description: 'Курси з NLP та трансформерів',
+        url: 'https://huggingface.co/learn',
+        icon: '🤗'
+    },
+    {
+        name: 'Google AI Hub',
+        category: 'learning',
+        description: 'Навчальні матеріали та ресурси від Google',
+        url: 'https://ai.google/education',
+        icon: '🎯'
+    },
+    {
+        name: 'Microsoft AI School',
+        category: 'learning',
+        description: 'Освітні ресурси з AI від Microsoft',
+        url: 'https://www.microsoft.com/ai/ai-school',
+        icon: '🏫'
+    },
+
     // Чат-боти
     {
         name: 'Claude',
@@ -34,6 +107,20 @@ const aiApps = [
         description: 'AI-помічник від Microsoft',
         url: 'https://copilot.microsoft.com',
         icon: '🎯'
+    },
+    {
+        name: 'Google AI Studio',
+        category: 'chatbots',
+        description: 'Експериментуйте з Google Gemini API',
+        url: 'https://aistudio.google.com',
+        icon: '🔬'
+    },
+    {
+        name: 'Poe',
+        category: 'chatbots',
+        description: 'Доступ до різних AI-моделей в одному місці',
+        url: 'https://poe.com',
+        icon: '🎪'
     },
 
     // Автоматизація
@@ -263,6 +350,20 @@ const aiApps = [
 
     // Інше
     {
+        name: 'Hugging Face',
+        category: 'other',
+        description: 'Платформа для ML-моделей та датасетів',
+        url: 'https://huggingface.co',
+        icon: '🤗'
+    },
+    {
+        name: 'Replicate',
+        category: 'other',
+        description: 'Запуск AI-моделей через API',
+        url: 'https://replicate.com',
+        icon: '🔄'
+    },
+    {
         name: 'GitHub Copilot',
         category: 'other',
         description: 'AI-асистент для програмування',
@@ -307,12 +408,16 @@ const aiApps = [
 ];
 
 const categoryNames = {
+    learning: '🎓 Навчання',
     chatbots: '💬 Чат-боти',
     automation: '⚡ Автоматизація',
     multimedia: '🎨 Мультимедіа',
     business: '💼 Бізнес',
     other: '🔧 Інше'
 };
+
+// Порядок відображення категорій
+const categoryOrder = ['learning', 'chatbots', 'automation', 'multimedia', 'business', 'other'];
 
 let currentFilter = 'all';
 let searchQuery = '';
@@ -342,7 +447,8 @@ function renderApps() {
         return acc;
     }, {});
 
-    Object.keys(groupedApps).forEach(category => {
+    // Використовуємо categoryOrder для правильного порядку відображення
+    categoryOrder.filter(category => groupedApps[category]).forEach(category => {
         const section = document.createElement('div');
         section.className = 'category-section';
 
@@ -377,7 +483,21 @@ function createAppCard(app) {
 
     const icon = document.createElement('div');
     icon.className = 'app-icon';
-    icon.textContent = app.icon;
+
+    // Підтримка як зображень так і емоджі
+    if (app.image) {
+        const img = document.createElement('img');
+        img.src = app.image;
+        img.alt = app.name;
+        img.onerror = function() {
+            // Якщо зображення не завантажилось, показуємо емоджі
+            this.style.display = 'none';
+            icon.textContent = app.icon;
+        };
+        icon.appendChild(img);
+    } else {
+        icon.textContent = app.icon;
+    }
 
     const name = document.createElement('div');
     name.className = 'app-name';
