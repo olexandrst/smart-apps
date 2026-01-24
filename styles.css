@@ -168,18 +168,19 @@ h1 {
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-    background: #FFFFFF;
-    border-radius: 12px;
-    padding: 0.5rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #f44336 0%, #c62828 100%);
+    border-radius: 20px;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(244, 67, 54, 0.2);
     overflow: hidden;
 }
 
 .app-icon img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    border-radius: 8px;
+    object-fit: cover;
+    border-radius: 50%;
+    background: white;
 }
 
 .app-name {
