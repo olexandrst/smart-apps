@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Launchpad - ШІ для бізнесу</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 AI Launchpad</h1>
+            <p class="subtitle">Каталог AI-інструментів для курсу "ШІ для бізнесу"</p>
+
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Пошук додатків...">
+            </div>
+        </header>
+
+        <main>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">Всі</button>
+                <button class="filter-btn" data-category="chatbots">Чат-боти</button>
+                <button class="filter-btn" data-category="automation">Автоматизація</button>
+                <button class="filter-btn" data-category="multimedia">Мультимедіа</button>
+                <button class="filter-btn" data-category="business">Бізнес</button>
+                <button class="filter-btn" data-category="other">Інше</button>
+            </div>
+
+            <div id="appsContainer"></div>
+        </main>
+
+        <footer>
+            <p>Створено для курсу "ШІ для бізнесу" © 2026</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
