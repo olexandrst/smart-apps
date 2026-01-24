@@ -5,15 +5,16 @@
 }
 
 :root {
-    --primary-color: #6366f1;
-    --secondary-color: #8b5cf6;
-    --bg-color: #0f172a;
-    --card-bg: #1e293b;
-    --text-color: #f1f5f9;
-    --text-muted: #94a3b8;
-    --border-color: #334155;
-    --hover-color: #312e81;
-    --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --primary-color: #E84545;
+    --secondary-color: #FF6B6B;
+    --bg-color: #2C3E50;
+    --card-bg: #34495E;
+    --text-color: #FFFFFF;
+    --text-muted: #BDC3C7;
+    --border-color: #445566;
+    --hover-color: #C62828;
+    --gradient: linear-gradient(135deg, #E84545 0%, #C62828 100%);
+    --accent-red: #E84545;
 }
 
 body {
@@ -37,11 +38,10 @@ header {
 
 h1 {
     font-size: 3rem;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-color);
     margin-bottom: 0.5rem;
+    font-weight: 700;
+    letter-spacing: -1px;
 }
 
 .subtitle {
@@ -68,8 +68,8 @@ h1 {
 }
 
 #searchInput:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    border-color: var(--accent-red);
+    box-shadow: 0 0 0 3px rgba(232, 69, 69, 0.1);
 }
 
 #searchInput::placeholder {
@@ -96,14 +96,16 @@ h1 {
 }
 
 .filter-btn:hover {
-    border-color: var(--primary-color);
+    border-color: var(--accent-red);
+    background: rgba(232, 69, 69, 0.1);
     transform: translateY(-2px);
 }
 
 .filter-btn.active {
-    background: var(--gradient);
-    border-color: transparent;
+    background: var(--accent-red);
+    border-color: var(--accent-red);
     color: white;
+    box-shadow: 0 4px 15px rgba(232, 69, 69, 0.3);
 }
 
 #appsContainer {
@@ -119,12 +121,15 @@ h1 {
 }
 
 .category-title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-red);
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .apps-grid {
@@ -150,8 +155,9 @@ h1 {
 
 .app-card:hover {
     transform: translateY(-5px);
-    border-color: var(--primary-color);
-    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+    border-color: var(--accent-red);
+    box-shadow: 0 10px 30px rgba(232, 69, 69, 0.3);
+    background: var(--bg-color);
 }
 
 .app-icon {
@@ -161,9 +167,10 @@ h1 {
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-    background: var(--gradient);
-    border-radius: 20px;
+    background: var(--accent-red);
+    border-radius: 15px;
     padding: 1rem;
+    box-shadow: 0 4px 10px rgba(232, 69, 69, 0.2);
 }
 
 .app-icon img {
@@ -198,6 +205,31 @@ footer {
     padding: 2rem 0;
     color: var(--text-muted);
     border-top: 1px solid var(--border-color);
+    margin-top: 3rem;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+.footer-link {
+    font-size: 1rem;
+}
+
+.footer-link a {
+    color: var(--accent-red);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-link a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+.footer-link strong {
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .hidden {
