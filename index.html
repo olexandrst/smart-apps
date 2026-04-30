@@ -25,6 +25,7 @@
                 <button class="filter-btn" data-category="automation">Автоматизація</button>
                 <button class="filter-btn" data-category="multimedia">Мультимедіа</button>
                 <button class="filter-btn" data-category="business">Бізнес</button>
+                <button class="filter-btn" data-category="developers">Розробникам</button>
                 <button class="filter-btn" data-category="other">Інше</button>
             </div>
 
@@ -46,6 +47,33 @@
                 </a>
             </p>
         </footer>
+    </div>
+
+    <div id="serviceModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-backdrop" data-modal-close></div>
+        <div class="modal-dialog" role="document">
+            <button class="modal-close" type="button" aria-label="Закрити" data-modal-close>×</button>
+            <div class="modal-header">
+                <div class="modal-icon" id="modalIcon"></div>
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <p class="modal-subtitle" id="modalSubtitle"></p>
+            </div>
+            <div class="modal-body">
+                <section class="modal-section">
+                    <h3 class="modal-section-title">Що це і для чого</h3>
+                    <p class="modal-details" id="modalDetails"></p>
+                </section>
+                <section class="modal-section" id="modalFeaturesSection">
+                    <h3 class="modal-section-title">Що вміє цей сервіс</h3>
+                    <ul class="modal-features" id="modalFeatures"></ul>
+                </section>
+            </div>
+            <div class="modal-footer">
+                <a class="modal-link" id="modalLink" href="#" target="_blank" rel="noopener noreferrer">
+                    Перейти до сервісу →
+                </a>
+            </div>
+        </div>
     </div>
 
     <script src="app.js"></script>

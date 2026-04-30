@@ -6,14 +6,28 @@ const aiApps = [
         description: 'Експерт з ШІ, викладач курсу "ШІ для бізнесу"',
         url: 'https://www.linkedin.com/in/alex-stasuk-2ba761148',
         image: 'assets/images/alex-stasuk.jpg',
-        icon: '👨‍🏫'
+        icon: '👨‍🏫',
+        details: 'Викладач курсу "ШІ для бізнесу" в бізнес-школі Smart People. Допомагає підприємцям опанувати штучний інтелект та інтегрувати його в бізнес-процеси.',
+        features: [
+            'Авторський курс з практичним підходом',
+            'Робота з реальними бізнес-кейсами',
+            'Менторинг та супровід студентів',
+            'Експертиза в галузі AI-автоматизації'
+        ]
     },
     {
         name: 'Smart People',
         category: 'learning',
         description: 'Бізнес-школа в м. Рівне - навчання та розвиток',
         url: 'https://smartpeople.ua/',
-        icon: '🎓'
+        icon: '🎓',
+        details: 'Бізнес-школа Smart People в м. Рівне пропонує курси для підприємців, керівників і фахівців. Спеціалізується на практичному навчанні бізнес-навичкам та сучасним технологіям.',
+        features: [
+            'Курси з ШІ для бізнесу',
+            'Програми для керівників і власників',
+            'Практичне навчання від експертів',
+            'Спільнота випускників і нетворкінг'
+        ]
     },
     {
         name: 'Google Teachable Machine',
@@ -78,14 +92,30 @@ const aiApps = [
         category: 'chatbots',
         description: 'Потужний AI-асистент від Anthropic для складних завдань',
         url: 'https://claude.ai',
-        icon: '🤖'
+        icon: '🤖',
+        details: 'Claude — це передовий AI-асистент від компанії Anthropic, орієнтований на безпечні та осмислені відповіді. Особливо сильний у роботі з довгими документами, аналізі та складних міркуваннях.',
+        features: [
+            'Аналіз великих документів і PDF',
+            'Просунута робота з кодом',
+            'Робота з зображеннями та діаграмами',
+            'Велике контекстне вікно',
+            'Артефакти — інтерактивні результати'
+        ]
     },
     {
         name: 'ChatGPT',
         category: 'chatbots',
         description: 'Популярний AI-чатбот від OpenAI',
         url: 'https://chat.openai.com',
-        icon: '💬'
+        icon: '💬',
+        details: 'ChatGPT — найпопулярніший AI-чатбот від OpenAI. Універсальний інструмент для написання текстів, програмування, навчання та творчих задач.',
+        features: [
+            'Генерація та редагування текстів',
+            'Допомога з програмуванням',
+            'Робота із зображеннями (GPT-4o)',
+            'Голосовий режим спілкування',
+            'GPTs — кастомні асистенти'
+        ]
     },
     {
         name: 'Gemini',
@@ -348,6 +378,106 @@ const aiApps = [
         icon: '📄'
     },
 
+    // Розробникам
+    {
+        name: 'GitHub Copilot',
+        category: 'developers',
+        description: 'AI-асистент для програмування',
+        url: 'https://github.com/features/copilot',
+        icon: '👨‍💻',
+        details: 'GitHub Copilot — це AI-помічник для розробників, який пропонує автодоповнення коду в реальному часі. Інтегрується з популярними IDE та підтримує багато мов програмування.',
+        features: [
+            'Автодоповнення коду в реальному часі',
+            'Підтримка десятків мов програмування',
+            'Чат для пояснення і рефакторингу',
+            'Інтеграція з VS Code, JetBrains, Neovim'
+        ]
+    },
+    {
+        name: 'Cursor',
+        category: 'developers',
+        description: 'IDE з вбудованим AI',
+        url: 'https://cursor.sh',
+        icon: '⌨️',
+        details: 'Cursor — це IDE на базі VS Code з глибокою інтеграцією AI. Дозволяє редагувати код за допомогою чату, генерувати функції та автоматично виправляти помилки.',
+        features: [
+            'Чат із розумінням всього проєкту',
+            'Редагування коду через AI-підказки',
+            'Автоматичне виправлення помилок',
+            'Сумісність з розширеннями VS Code'
+        ]
+    },
+    {
+        name: 'Replit AI',
+        category: 'developers',
+        description: 'Онлайн IDE з AI-помічником',
+        url: 'https://replit.com',
+        icon: '💻',
+        details: 'Replit — це браузерна платформа для розробки з вбудованим AI-помічником. Дозволяє створювати, запускати і ділитись проєктами без локальних налаштувань.',
+        features: [
+            'Розробка прямо в браузері',
+            'AI-агент для автоматичного створення проєктів',
+            'Спільне редагування в реальному часі',
+            'Підтримка багатьох мов і фреймворків'
+        ]
+    },
+    {
+        name: 'Claude Code',
+        category: 'developers',
+        description: 'CLI-агент для розробки від Anthropic',
+        url: 'https://claude.com/product/claude-code',
+        icon: '⚙️',
+        details: 'Claude Code — офіційний CLI-агент від Anthropic для роботи з кодовою базою прямо в терміналі. Розуміє контекст проєкту, виконує задачі та інтегрується з IDE.',
+        features: [
+            'Робота безпосередньо в терміналі',
+            'Розуміння всієї кодової бази',
+            'Виконання багатокрокових задач',
+            'Інтеграція з VS Code, JetBrains'
+        ]
+    },
+    {
+        name: 'v0',
+        category: 'developers',
+        description: 'AI-генерація React-компонентів від Vercel',
+        url: 'https://v0.dev',
+        icon: '🔷',
+        details: 'v0 від Vercel — це AI-інструмент для генерації UI-компонентів за текстовим описом. Видає готовий код React/Tailwind, який можна одразу використовувати у проєкті.',
+        features: [
+            'Генерація UI з текстового опису',
+            'Готовий код React + Tailwind CSS',
+            'Інтерактивний редактор результатів',
+            'Експорт в shadcn/ui компоненти'
+        ]
+    },
+    {
+        name: 'Bolt.new',
+        category: 'developers',
+        description: 'Створення повноцінних застосунків в браузері',
+        url: 'https://bolt.new',
+        icon: '⚡',
+        details: 'Bolt.new — браузерна AI-платформа від StackBlitz для створення повноцінних веб-застосунків. Генерує, запускає та розгортає код прямо у вашому браузері.',
+        features: [
+            'Створення full-stack застосунків',
+            'Запуск Node.js у браузері (WebContainers)',
+            'Розгортання одним кліком',
+            'Підтримка популярних фреймворків'
+        ]
+    },
+    {
+        name: 'Windsurf',
+        category: 'developers',
+        description: 'AI-IDE наступного покоління від Codeium',
+        url: 'https://codeium.com/windsurf',
+        icon: '🌊',
+        details: 'Windsurf — це AI-IDE від Codeium з агентним підходом. Сам аналізує проєкт, планує зміни та виконує їх з контекстом всієї кодової бази.',
+        features: [
+            'Cascade — агент з повним контекстом проєкту',
+            'Автоматичні багатофайлові зміни',
+            'Швидкі чат-команди',
+            'Безкоштовний автокомпліт'
+        ]
+    },
+
     // Інше
     {
         name: 'Hugging Face',
@@ -362,20 +492,6 @@ const aiApps = [
         description: 'Запуск AI-моделей через API',
         url: 'https://replicate.com',
         icon: '🔄'
-    },
-    {
-        name: 'GitHub Copilot',
-        category: 'other',
-        description: 'AI-асистент для програмування',
-        url: 'https://github.com/features/copilot',
-        icon: '👨‍💻'
-    },
-    {
-        name: 'Cursor',
-        category: 'other',
-        description: 'IDE з вбудованим AI',
-        url: 'https://cursor.sh',
-        icon: '⌨️'
     },
     {
         name: 'Grammarly',
@@ -399,13 +515,6 @@ const aiApps = [
         icon: '🖥️'
     },
     {
-        name: 'Replit AI',
-        category: 'other',
-        description: 'Онлайн IDE з AI-помічником',
-        url: 'https://replit.com',
-        icon: '💻'
-    },
-    {
         name: 'LM Studio',
         category: 'other',
         description: 'Локальний запуск великих мовних моделей',
@@ -420,11 +529,12 @@ const categoryNames = {
     automation: '⚡ Автоматизація',
     multimedia: '🎨 Мультимедіа',
     business: '💼 Бізнес',
+    developers: '👨‍💻 Розробникам',
     other: '🔧 Інше'
 };
 
 // Порядок відображення категорій
-const categoryOrder = ['learning', 'chatbots', 'automation', 'multimedia', 'business', 'other'];
+const categoryOrder = ['learning', 'chatbots', 'automation', 'multimedia', 'business', 'developers', 'other'];
 
 let currentFilter = 'all';
 let searchQuery = '';
@@ -482,11 +592,10 @@ function renderApps() {
 }
 
 function createAppCard(app) {
-    const card = document.createElement('a');
+    const card = document.createElement('button');
     card.className = 'app-card';
-    card.href = app.url;
-    card.target = '_blank';
-    card.rel = 'noopener noreferrer';
+    card.type = 'button';
+    card.addEventListener('click', () => openServiceModal(app));
 
     const icon = document.createElement('div');
     icon.className = 'app-icon';
@@ -521,6 +630,74 @@ function createAppCard(app) {
     return card;
 }
 
+function openServiceModal(app) {
+    const modal = document.getElementById('serviceModal');
+    const iconEl = document.getElementById('modalIcon');
+    const titleEl = document.getElementById('modalTitle');
+    const subtitleEl = document.getElementById('modalSubtitle');
+    const detailsEl = document.getElementById('modalDetails');
+    const featuresEl = document.getElementById('modalFeatures');
+    const featuresSection = document.getElementById('modalFeaturesSection');
+    const linkEl = document.getElementById('modalLink');
+
+    iconEl.innerHTML = '';
+    if (app.image) {
+        const img = document.createElement('img');
+        img.src = app.image;
+        img.alt = app.name;
+        img.onerror = function() {
+            this.remove();
+            iconEl.textContent = app.icon;
+        };
+        iconEl.appendChild(img);
+    } else {
+        iconEl.textContent = app.icon;
+    }
+
+    titleEl.textContent = app.name;
+    subtitleEl.textContent = categoryNames[app.category] || '';
+    detailsEl.textContent = app.details || app.description;
+
+    featuresEl.innerHTML = '';
+    if (Array.isArray(app.features) && app.features.length > 0) {
+        app.features.forEach(feature => {
+            const li = document.createElement('li');
+            li.textContent = feature;
+            featuresEl.appendChild(li);
+        });
+        featuresSection.style.display = '';
+    } else {
+        featuresSection.style.display = 'none';
+    }
+
+    linkEl.href = app.url;
+
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+}
+
+function closeServiceModal() {
+    const modal = document.getElementById('serviceModal');
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+}
+
+function setupModal() {
+    const modal = document.getElementById('serviceModal');
+
+    modal.querySelectorAll('[data-modal-close]').forEach(el => {
+        el.addEventListener('click', closeServiceModal);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+            closeServiceModal();
+        }
+    });
+}
+
 function setupFilters() {
     const filterButtons = document.querySelectorAll('.filter-btn');
 
@@ -547,4 +724,5 @@ document.addEventListener('DOMContentLoaded', () => {
     renderApps();
     setupFilters();
     setupSearch();
+    setupModal();
 });
