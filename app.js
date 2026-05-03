@@ -933,10 +933,16 @@ function renderApps() {
     }
 
     if (searchQuery) {
-        filteredApps = filteredApps.filter(app =>
-            app.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            app.description.toLowerCase().includes(searchQuery.toLowerCase())
-        );
+        const q = searchQuery.toLowerCase();
+        filteredApps = filteredApps.filter(app => {
+            const haystack = [
+                app.name,
+                app.description,
+                app.details,
+                Array.isArray(app.features) ? app.features.join(' ') : ''
+            ].filter(Boolean).join(' ').toLowerCase();
+            return haystack.includes(q);
+        });
     }
 
     const groupedApps = filteredApps.reduce((acc, app) => {
