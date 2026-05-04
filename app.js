@@ -1743,8 +1743,8 @@ function openServiceModal(app) {
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
 
-    const dialog = modal.querySelector('.modal-dialog');
-    if (dialog) dialog.scrollTop = 0;
+    const scroll = modal.querySelector('.modal-scroll');
+    if (scroll) scroll.scrollTop = 0;
 }
 
 function renderModalDock(currentApp) {
@@ -1768,22 +1768,27 @@ function renderModalDock(currentApp) {
         item.setAttribute('aria-label', app.name);
         item.addEventListener('click', () => openServiceModal(app));
 
+        const iconWrap = document.createElement('span');
+        iconWrap.className = 'dock-item-icon';
+
         if (app.image) {
             const img = document.createElement('img');
             img.src = app.image;
             img.alt = app.name;
             img.onerror = function() {
                 this.remove();
-                item.textContent = app.icon;
+                iconWrap.textContent = app.icon;
             };
-            item.appendChild(img);
+            iconWrap.appendChild(img);
         } else {
-            item.textContent = app.icon;
+            iconWrap.textContent = app.icon;
         }
 
         const label = document.createElement('span');
-        label.className = 'dock-tooltip';
+        label.className = 'dock-item-name';
         label.textContent = app.name;
+
+        item.appendChild(iconWrap);
         item.appendChild(label);
 
         dock.appendChild(item);
