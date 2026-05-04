@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Launchpad - ШІ для бізнесу</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 AI Launchpad</h1>
+            <p class="subtitle">Каталог AI-інструментів для курсу "ШІ для бізнесу"</p>
+
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Пошук додатків...">
+            </div>
+        </header>
+
+        <main>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">Всі</button>
+                <button class="filter-btn" data-category="learning">Навчання</button>
+                <button class="filter-btn" data-category="chatbots">Чат-боти</button>
+                <button class="filter-btn" data-category="automation">Автоматизація</button>
+                <button class="filter-btn" data-category="multimedia">Мультимедіа</button>
+                <button class="filter-btn" data-category="business">Бізнес</button>
+                <button class="filter-btn" data-category="developers">Розробникам</button>
+                <button class="filter-btn" data-category="other">Інше</button>
+            </div>
+
+            <div id="appsContainer"></div>
+        </main>
+
+        <footer>
+            <p>Створено для курсу "ШІ для бізнесу" © 2026</p>
+            <p>
+                За участі
+                <a href="https://xwarriors.academy" target="_blank" rel="noopener noreferrer" class="footer-link-inline">
+                    <strong>xWarriors Academy</strong>
+                </a>
+            </p>
+            <p class="footer-link">
+                Бізнес-школа
+                <a href="https://smartpeople.ua/" target="_blank" rel="noopener noreferrer">
+                    <strong>SMART PEOPLE</strong>
+                </a>
+            </p>
+        </footer>
+    </div>
+
+    <div id="serviceModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-backdrop" data-modal-close></div>
+        <div class="modal-dialog" role="document">
+            <button class="modal-close" type="button" aria-label="Закрити" data-modal-close>×</button>
+            <div class="modal-header">
+                <div class="modal-icon" id="modalIcon"></div>
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <p class="modal-subtitle" id="modalSubtitle"></p>
+            </div>
+            <div class="modal-body">
+                <section class="modal-section">
+                    <h3 class="modal-section-title">Що це і для чого</h3>
+                    <p class="modal-details" id="modalDetails"></p>
+                </section>
+                <section class="modal-section" id="modalFeaturesSection">
+                    <h3 class="modal-section-title">Що вміє цей сервіс</h3>
+                    <ul class="modal-features" id="modalFeatures"></ul>
+                </section>
+            </div>
+            <div class="modal-footer">
+                <a class="modal-link" id="modalLink" href="#" target="_blank" rel="noopener noreferrer">
+                    Перейти до сервісу →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
