@@ -272,11 +272,12 @@ const aiApps = [
         ]
     },
     {
-        name: 'Mistral Le Chat',
+        name: 'Mistral',
         category: 'chatbots',
         description: 'Європейський AI-помічник від Mistral',
         url: 'https://chat.mistral.ai',
-        icon: '🇫🇷',
+        image: 'https://www.google.com/s2/favicons?domain=mistral.ai&sz=128',
+        icon: '🌬️',
         details: 'AI-чатбот від французької компанії Mistral — однієї з провідних європейських AI-лабораторій. Альтернатива американським гігантам із сильним фокусом на приватність та відповідність європейським стандартам. Працює дуже швидко і якісно генерує тексти.',
         features: [
             'Європейський сервіс зі строгою приватністю',
@@ -1598,6 +1599,23 @@ const categoryOrder = ['learning', 'chatbots', 'automation', 'multimedia', 'busi
 let currentFilter = 'all';
 let searchQuery = '';
 
+const FIVE_STAR_NAMES = new Set(['Алекс Стасюк', 'Smart People']);
+
+function getAppRating(app) {
+    if (typeof app._rating === 'number') return app._rating;
+    if (FIVE_STAR_NAMES.has(app.name)) {
+        app._rating = 5.0;
+        return app._rating;
+    }
+    let h = 0;
+    for (let i = 0; i < app.name.length; i++) {
+        h = ((h << 5) - h + app.name.charCodeAt(i)) >>> 0;
+    }
+    // 4.3 .. 4.9 step 0.1
+    app._rating = Math.round((4.3 + (h % 7) * 0.1) * 10) / 10;
+    return app._rating;
+}
+
 function renderApps() {
     const container = document.getElementById('appsContainer');
     container.innerHTML = '';
@@ -1642,10 +1660,13 @@ function renderApps() {
         const grid = document.createElement('div');
         grid.className = 'apps-grid';
 
-        groupedApps[category].forEach(app => {
-            const card = createAppCard(app);
-            grid.appendChild(card);
-        });
+        groupedApps[category]
+            .slice()
+            .sort((a, b) => getAppRating(b) - getAppRating(a))
+            .forEach(app => {
+                const card = createAppCard(app);
+                grid.appendChild(card);
+            });
 
         section.appendChild(grid);
         container.appendChild(section);
@@ -1691,8 +1712,30 @@ function createAppCard(app) {
     card.appendChild(icon);
     card.appendChild(name);
     card.appendChild(description);
+    card.appendChild(buildRatingElement(getAppRating(app)));
 
     return card;
+}
+
+function buildRatingElement(rating) {
+    const wrap = document.createElement('div');
+    wrap.className = 'app-rating';
+
+    const stars = document.createElement('span');
+    stars.className = 'stars';
+    stars.setAttribute('aria-label', `${rating} з 5`);
+    const inner = document.createElement('span');
+    inner.className = 'stars-fill';
+    inner.style.width = `${(rating / 5) * 100}%`;
+    stars.appendChild(inner);
+
+    const value = document.createElement('span');
+    value.className = 'rating-value';
+    value.textContent = rating.toFixed(1);
+
+    wrap.appendChild(stars);
+    wrap.appendChild(value);
+    return wrap;
 }
 
 function openServiceModal(app) {
@@ -1703,7 +1746,7 @@ function openServiceModal(app) {
     const detailsEl = document.getElementById('modalDetails');
     const featuresEl = document.getElementById('modalFeatures');
     const featuresSection = document.getElementById('modalFeaturesSection');
-    const linkEl = document.getElementById('modalLink');
+    const linkEl = null;
 
     iconEl.innerHTML = '';
     if (app.image) {
@@ -1735,11 +1778,117 @@ function openServiceModal(app) {
         featuresSection.style.display = 'none';
     }
 
-    linkEl.href = app.url;
+    if (linkEl) linkEl.href = app.url;
+    const linkTop = document.getElementById('modalLinkTop');
+    if (linkTop) linkTop.href = app.url;
+
+    const ratingEl = document.getElementById('modalRating');
+    if (ratingEl) {
+        ratingEl.innerHTML = '';
+        ratingEl.appendChild(buildRatingElement(getAppRating(app)));
+    }
+
+    renderModalDock(app);
 
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
+
+    const scroll = modal.querySelector('.modal-scroll');
+    if (scroll) scroll.scrollTop = 0;
+}
+
+function renderModalDock(currentApp) {
+    const dock = document.getElementById('modalDock');
+    const wrapper = dock ? dock.parentElement : null;
+    if (!dock) return;
+
+    const siblings = aiApps.filter(a => a.category === currentApp.category && a.name !== currentApp.name);
+
+    dock.innerHTML = '';
+    if (siblings.length === 0) {
+        if (wrapper) wrapper.style.display = 'none';
+        return;
+    }
+    if (wrapper) wrapper.style.display = '';
+
+    siblings.forEach(app => {
+        const item = document.createElement('button');
+        item.type = 'button';
+        item.className = 'dock-item';
+        item.title = app.name;
+        item.setAttribute('aria-label', app.name);
+        item.addEventListener('click', () => openServiceModal(app));
+
+        const iconWrap = document.createElement('span');
+        iconWrap.className = 'dock-item-icon';
+
+        if (app.image) {
+            const img = document.createElement('img');
+            img.src = app.image;
+            img.alt = app.name;
+            img.onerror = function() {
+                this.remove();
+                iconWrap.textContent = app.icon;
+            };
+            iconWrap.appendChild(img);
+        } else {
+            iconWrap.textContent = app.icon;
+        }
+
+        const label = document.createElement('span');
+        label.className = 'dock-item-name';
+        label.textContent = app.name;
+
+        item.appendChild(iconWrap);
+        item.appendChild(label);
+
+        dock.appendChild(item);
+    });
+
+    requestAnimationFrame(() => {
+        dock.scrollLeft = 0;
+        updateDockNav();
+    });
+}
+
+function updateDockNav() {
+    const dock = document.getElementById('modalDock');
+    const prev = document.getElementById('dockNavPrev');
+    const next = document.getElementById('dockNavNext');
+    if (!dock || !prev || !next) return;
+
+    const overflow = dock.scrollWidth - dock.clientWidth > 2;
+    if (!overflow) {
+        dock.classList.add('no-overflow');
+        dock.classList.remove('at-start', 'at-end');
+        prev.classList.remove('is-visible');
+        next.classList.remove('is-visible');
+        return;
+    }
+
+    dock.classList.remove('no-overflow');
+    const atStart = dock.scrollLeft <= 2;
+    const atEnd = dock.scrollLeft + dock.clientWidth >= dock.scrollWidth - 2;
+
+    dock.classList.toggle('at-start', atStart);
+    dock.classList.toggle('at-end', atEnd);
+    prev.classList.toggle('is-visible', !atStart);
+    next.classList.toggle('is-visible', !atEnd);
+}
+
+function setupDockNav() {
+    const dock = document.getElementById('modalDock');
+    const prev = document.getElementById('dockNavPrev');
+    const next = document.getElementById('dockNavNext');
+    if (!dock || !prev || !next) return;
+
+    const step = () => Math.max(160, Math.round(dock.clientWidth * 0.7));
+
+    prev.addEventListener('click', () => dock.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => dock.scrollBy({ left: step(), behavior: 'smooth' }));
+    dock.addEventListener('scroll', updateDockNav, { passive: true });
+    window.addEventListener('resize', updateDockNav);
 }
 
 function closeServiceModal() {
@@ -1790,4 +1939,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFilters();
     setupSearch();
     setupModal();
+    setupDockNav();
 });
