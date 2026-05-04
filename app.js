@@ -1737,9 +1737,57 @@ function openServiceModal(app) {
 
     linkEl.href = app.url;
 
+    renderModalDock(app);
+
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
+
+    const dialog = modal.querySelector('.modal-dialog');
+    if (dialog) dialog.scrollTop = 0;
+}
+
+function renderModalDock(currentApp) {
+    const dock = document.getElementById('modalDock');
+    if (!dock) return;
+
+    const siblings = aiApps.filter(a => a.category === currentApp.category && a.name !== currentApp.name);
+
+    dock.innerHTML = '';
+    if (siblings.length === 0) {
+        dock.style.display = 'none';
+        return;
+    }
+    dock.style.display = '';
+
+    siblings.forEach(app => {
+        const item = document.createElement('button');
+        item.type = 'button';
+        item.className = 'dock-item';
+        item.title = app.name;
+        item.setAttribute('aria-label', app.name);
+        item.addEventListener('click', () => openServiceModal(app));
+
+        if (app.image) {
+            const img = document.createElement('img');
+            img.src = app.image;
+            img.alt = app.name;
+            img.onerror = function() {
+                this.remove();
+                item.textContent = app.icon;
+            };
+            item.appendChild(img);
+        } else {
+            item.textContent = app.icon;
+        }
+
+        const label = document.createElement('span');
+        label.className = 'dock-tooltip';
+        label.textContent = app.name;
+        item.appendChild(label);
+
+        dock.appendChild(item);
+    });
 }
 
 function closeServiceModal() {
