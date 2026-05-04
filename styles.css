@@ -590,6 +590,29 @@ footer p {
     flex-shrink: 0;
 }
 
+.modal-header-rating {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-header-rating .app-rating {
+    margin-top: 0;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--glass-border-strong);
+}
+
+.modal-header-rating .stars {
+    font-size: 1rem;
+}
+
+@media (max-width: 900px) {
+    .modal-header-rating { display: none; }
+}
+
 .modal-link-compact {
     padding: 0.55rem 1.1rem;
     font-size: 0.9rem;

@@ -276,6 +276,7 @@ const aiApps = [
         category: 'chatbots',
         description: 'Європейський AI-помічник від Mistral',
         url: 'https://chat.mistral.ai',
+        image: 'https://www.google.com/s2/favicons?domain=mistral.ai&sz=128',
         icon: '🌬️',
         details: 'AI-чатбот від французької компанії Mistral — однієї з провідних європейських AI-лабораторій. Альтернатива американським гігантам із сильним фокусом на приватність та відповідність європейським стандартам. Працює дуже швидко і якісно генерує тексти.',
         features: [
@@ -1745,7 +1746,7 @@ function openServiceModal(app) {
     const detailsEl = document.getElementById('modalDetails');
     const featuresEl = document.getElementById('modalFeatures');
     const featuresSection = document.getElementById('modalFeaturesSection');
-    const linkEl = document.getElementById('modalLink');
+    const linkEl = null;
 
     iconEl.innerHTML = '';
     if (app.image) {
@@ -1777,9 +1778,15 @@ function openServiceModal(app) {
         featuresSection.style.display = 'none';
     }
 
-    linkEl.href = app.url;
+    if (linkEl) linkEl.href = app.url;
     const linkTop = document.getElementById('modalLinkTop');
     if (linkTop) linkTop.href = app.url;
+
+    const ratingEl = document.getElementById('modalRating');
+    if (ratingEl) {
+        ratingEl.innerHTML = '';
+        ratingEl.appendChild(buildRatingElement(getAppRating(app)));
+    }
 
     renderModalDock(app);
 
