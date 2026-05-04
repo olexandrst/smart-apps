@@ -1749,16 +1749,17 @@ function openServiceModal(app) {
 
 function renderModalDock(currentApp) {
     const dock = document.getElementById('modalDock');
+    const wrapper = dock ? dock.parentElement : null;
     if (!dock) return;
 
     const siblings = aiApps.filter(a => a.category === currentApp.category && a.name !== currentApp.name);
 
     dock.innerHTML = '';
     if (siblings.length === 0) {
-        dock.style.display = 'none';
+        if (wrapper) wrapper.style.display = 'none';
         return;
     }
-    dock.style.display = '';
+    if (wrapper) wrapper.style.display = '';
 
     siblings.forEach(app => {
         const item = document.createElement('button');
@@ -1793,6 +1794,50 @@ function renderModalDock(currentApp) {
 
         dock.appendChild(item);
     });
+
+    requestAnimationFrame(() => {
+        dock.scrollLeft = 0;
+        updateDockNav();
+    });
+}
+
+function updateDockNav() {
+    const dock = document.getElementById('modalDock');
+    const prev = document.getElementById('dockNavPrev');
+    const next = document.getElementById('dockNavNext');
+    if (!dock || !prev || !next) return;
+
+    const overflow = dock.scrollWidth - dock.clientWidth > 2;
+    if (!overflow) {
+        dock.classList.add('no-overflow');
+        dock.classList.remove('at-start', 'at-end');
+        prev.classList.remove('is-visible');
+        next.classList.remove('is-visible');
+        return;
+    }
+
+    dock.classList.remove('no-overflow');
+    const atStart = dock.scrollLeft <= 2;
+    const atEnd = dock.scrollLeft + dock.clientWidth >= dock.scrollWidth - 2;
+
+    dock.classList.toggle('at-start', atStart);
+    dock.classList.toggle('at-end', atEnd);
+    prev.classList.toggle('is-visible', !atStart);
+    next.classList.toggle('is-visible', !atEnd);
+}
+
+function setupDockNav() {
+    const dock = document.getElementById('modalDock');
+    const prev = document.getElementById('dockNavPrev');
+    const next = document.getElementById('dockNavNext');
+    if (!dock || !prev || !next) return;
+
+    const step = () => Math.max(160, Math.round(dock.clientWidth * 0.7));
+
+    prev.addEventListener('click', () => dock.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => dock.scrollBy({ left: step(), behavior: 'smooth' }));
+    dock.addEventListener('scroll', updateDockNav, { passive: true });
+    window.addEventListener('resize', updateDockNav);
 }
 
 function closeServiceModal() {
@@ -1843,4 +1888,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFilters();
     setupSearch();
     setupModal();
+    setupDockNav();
 });

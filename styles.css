@@ -668,8 +668,18 @@ footer p {
 }
 
 /* macOS-style dock at the bottom of the modal */
-.modal-dock {
+.modal-dock-wrapper {
+    position: relative;
     flex: 0 0 auto;
+    border-top: 1px solid var(--glass-border-strong);
+    border-radius: 0 0 26px 26px;
+    background: linear-gradient(180deg, rgba(20, 24, 30, 0.35), rgba(20, 24, 30, 0.65));
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    overflow: hidden;
+}
+
+.modal-dock {
     padding: 1rem 1.25rem 1.25rem;
     display: flex;
     gap: 0.85rem;
@@ -678,21 +688,77 @@ footer p {
     flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
-    background: linear-gradient(180deg, rgba(20, 24, 30, 0.35), rgba(20, 24, 30, 0.65));
-    backdrop-filter: blur(18px) saturate(160%);
-    -webkit-backdrop-filter: blur(18px) saturate(160%);
-    border-top: 1px solid var(--glass-border-strong);
-    border-radius: 0 0 26px 26px;
-    scrollbar-width: thin;
     scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x proximity;
+    mask-image: linear-gradient(90deg, transparent 0, #000 28px, #000 calc(100% - 28px), transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 28px, #000 calc(100% - 28px), transparent 100%);
+    transition: -webkit-mask-image 0.2s ease, mask-image 0.2s ease;
 }
 
-.modal-dock:has(.dock-item:nth-child(1):last-child),
-.modal-dock.center {
+.modal-dock.at-start {
+    mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 28px), transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 28px), transparent 100%);
+}
+
+.modal-dock.at-end {
+    mask-image: linear-gradient(90deg, transparent 0, #000 28px, #000 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 28px, #000 100%);
+}
+
+.modal-dock.no-overflow {
     justify-content: center;
+    mask-image: none;
+    -webkit-mask-image: none;
 }
 
-.modal-dock::-webkit-scrollbar { height: 6px; }
+.modal-dock::-webkit-scrollbar { display: none; }
+
+.modal-dock .dock-item { scroll-snap-align: start; }
+
+.dock-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--glass-border-strong);
+    background: rgba(20, 24, 30, 0.65);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    color: var(--white);
+    font-size: 1.6rem;
+    line-height: 1;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+    transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    opacity: 0;
+    pointer-events: none;
+    padding-bottom: 3px;
+}
+
+.dock-nav-prev { left: 8px; }
+.dock-nav-next { right: 8px; }
+
+.dock-nav:hover {
+    background: var(--red-gradient);
+    border-color: transparent;
+    box-shadow: var(--red-glow);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.dock-nav-prev.is-visible,
+.dock-nav-next.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
 
 .dock-item {
     position: relative;
@@ -889,6 +955,15 @@ body.modal-open {
     .dock-item:hover .dock-item-icon {
         transform: translateY(-5px) scale(1.08);
     }
+
+    .dock-nav {
+        width: 32px;
+        height: 32px;
+        font-size: 1.3rem;
+    }
+
+    .dock-nav-prev { left: 4px; }
+    .dock-nav-next { right: 4px; }
 
     .modal-header {
         padding: 1.75rem 1.5rem 1.25rem;
