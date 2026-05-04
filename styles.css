@@ -574,7 +574,7 @@ footer p {
     align-items: center;
     gap: 0.9rem;
     min-width: 0;
-    flex: 1 1 auto;
+    flex: 0 1 auto;
 }
 
 .modal-header-text {
@@ -591,10 +591,11 @@ footer p {
 }
 
 .modal-header-rating {
-    flex: 0 0 auto;
+    flex: 1 1 auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 0;
 }
 
 .modal-header-rating .app-rating {
