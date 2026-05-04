@@ -272,11 +272,11 @@ const aiApps = [
         ]
     },
     {
-        name: 'Mistral Le Chat',
+        name: 'Mistral',
         category: 'chatbots',
         description: 'Європейський AI-помічник від Mistral',
         url: 'https://chat.mistral.ai',
-        icon: '🇫🇷',
+        icon: '🌬️',
         details: 'AI-чатбот від французької компанії Mistral — однієї з провідних європейських AI-лабораторій. Альтернатива американським гігантам із сильним фокусом на приватність та відповідність європейським стандартам. Працює дуже швидко і якісно генерує тексти.',
         features: [
             'Європейський сервіс зі строгою приватністю',
@@ -1598,6 +1598,23 @@ const categoryOrder = ['learning', 'chatbots', 'automation', 'multimedia', 'busi
 let currentFilter = 'all';
 let searchQuery = '';
 
+const FIVE_STAR_NAMES = new Set(['Алекс Стасюк', 'Smart People']);
+
+function getAppRating(app) {
+    if (typeof app._rating === 'number') return app._rating;
+    if (FIVE_STAR_NAMES.has(app.name)) {
+        app._rating = 5.0;
+        return app._rating;
+    }
+    let h = 0;
+    for (let i = 0; i < app.name.length; i++) {
+        h = ((h << 5) - h + app.name.charCodeAt(i)) >>> 0;
+    }
+    // 4.3 .. 4.9 step 0.1
+    app._rating = Math.round((4.3 + (h % 7) * 0.1) * 10) / 10;
+    return app._rating;
+}
+
 function renderApps() {
     const container = document.getElementById('appsContainer');
     container.innerHTML = '';
@@ -1642,10 +1659,13 @@ function renderApps() {
         const grid = document.createElement('div');
         grid.className = 'apps-grid';
 
-        groupedApps[category].forEach(app => {
-            const card = createAppCard(app);
-            grid.appendChild(card);
-        });
+        groupedApps[category]
+            .slice()
+            .sort((a, b) => getAppRating(b) - getAppRating(a))
+            .forEach(app => {
+                const card = createAppCard(app);
+                grid.appendChild(card);
+            });
 
         section.appendChild(grid);
         container.appendChild(section);
@@ -1691,8 +1711,30 @@ function createAppCard(app) {
     card.appendChild(icon);
     card.appendChild(name);
     card.appendChild(description);
+    card.appendChild(buildRatingElement(getAppRating(app)));
 
     return card;
+}
+
+function buildRatingElement(rating) {
+    const wrap = document.createElement('div');
+    wrap.className = 'app-rating';
+
+    const stars = document.createElement('span');
+    stars.className = 'stars';
+    stars.setAttribute('aria-label', `${rating} з 5`);
+    const inner = document.createElement('span');
+    inner.className = 'stars-fill';
+    inner.style.width = `${(rating / 5) * 100}%`;
+    stars.appendChild(inner);
+
+    const value = document.createElement('span');
+    value.className = 'rating-value';
+    value.textContent = rating.toFixed(1);
+
+    wrap.appendChild(stars);
+    wrap.appendChild(value);
+    return wrap;
 }
 
 function openServiceModal(app) {
@@ -1736,6 +1778,8 @@ function openServiceModal(app) {
     }
 
     linkEl.href = app.url;
+    const linkTop = document.getElementById('modalLinkTop');
+    if (linkTop) linkTop.href = app.url;
 
     renderModalDock(app);
 

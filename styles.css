@@ -358,6 +358,53 @@ h1 {
     line-height: 1.5;
 }
 
+.app-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.65rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--gray-100);
+    margin-top: auto;
+}
+
+.stars {
+    --star-fill: 0%;
+    position: relative;
+    display: inline-block;
+    font-size: 0.85rem;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.20);
+    letter-spacing: 1px;
+}
+
+.stars::before {
+    content: '★★★★★';
+}
+
+.stars-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #ffb800;
+    text-shadow: 0 0 8px rgba(255, 184, 0, 0.45);
+}
+
+.stars-fill::before {
+    content: '★★★★★';
+}
+
+.rating-value {
+    color: var(--white);
+    font-variant-numeric: tabular-nums;
+}
+
 .app-category-badge {
     font-size: 0.7rem;
     padding: 0.25rem 0.75rem;
@@ -480,12 +527,6 @@ footer p {
 }
 
 .modal-close {
-    position: sticky;
-    top: 1rem;
-    align-self: flex-end;
-    margin-right: 1rem;
-    margin-top: 1rem;
-    margin-bottom: -2.75rem;
     width: 40px;
     height: 40px;
     background: rgba(20, 24, 30, 0.65);
@@ -501,7 +542,6 @@ footer p {
     justify-content: center;
     backdrop-filter: blur(14px) saturate(180%);
     -webkit-backdrop-filter: blur(14px) saturate(180%);
-    z-index: 5;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
     flex-shrink: 0;
 }
@@ -514,22 +554,59 @@ footer p {
 }
 
 .modal-header {
-    padding: 2.25rem 2rem 1.5rem;
-    text-align: center;
+    flex: 0 0 auto;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
     border-bottom: 1px solid var(--glass-border);
+    background: rgba(40, 44, 52, 0.55);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border-radius: 26px 26px 0 0;
     position: relative;
+    z-index: 4;
+}
+
+.modal-header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.modal-header-text {
+    min-width: 0;
+    flex: 1 1 auto;
+    text-align: left;
+}
+
+.modal-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-shrink: 0;
+}
+
+.modal-link-compact {
+    padding: 0.55rem 1.1rem;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 14px rgba(227, 6, 19, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .modal-icon {
-    width: 88px;
-    height: 88px;
-    margin: 0 auto 1rem;
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3rem;
+    font-size: 1.75rem;
     background: var(--red-gradient);
-    border-radius: 24px;
+    border-radius: 16px;
+    padding: 6px;
     box-shadow: var(--red-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
     overflow: hidden;
     position: relative;
@@ -555,16 +632,22 @@ footer p {
 }
 
 .modal-title {
-    font-size: 1.85rem;
+    font-size: 1.35rem;
     font-weight: 700;
     color: var(--white);
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.5px;
+    margin-bottom: 0.15rem;
+    letter-spacing: -0.3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .modal-subtitle {
     color: var(--text-muted);
-    font-size: 1rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .modal-body {
@@ -966,17 +1049,40 @@ body.modal-open {
     .dock-nav-next { right: 4px; }
 
     .modal-header {
-        padding: 1.75rem 1.5rem 1.25rem;
+        padding: 0.75rem 0.85rem;
+        gap: 0.65rem;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .modal-header-left {
+        gap: 0.65rem;
     }
 
     .modal-icon {
-        width: 68px;
-        height: 68px;
-        font-size: 2.5rem;
+        width: 46px;
+        height: 46px;
+        font-size: 1.35rem;
+        border-radius: 13px;
+        padding: 5px;
     }
 
     .modal-title {
-        font-size: 1.4rem;
+        font-size: 1.05rem;
+    }
+
+    .modal-subtitle {
+        font-size: 0.78rem;
+    }
+
+    .modal-link-compact {
+        padding: 0.5rem 0.85rem;
+        font-size: 0.82rem;
+    }
+
+    .modal-close {
+        width: 36px;
+        height: 36px;
+        font-size: 1.3rem;
     }
 
     .modal-body,

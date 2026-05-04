@@ -52,26 +52,35 @@
     <div id="serviceModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-backdrop" data-modal-close></div>
         <div class="modal-dialog" role="document">
-            <div class="modal-scroll">
-                <button class="modal-close" type="button" aria-label="Закрити" data-modal-close>×</button>
-                <div class="modal-header">
+            <div class="modal-header">
+                <div class="modal-header-left">
                     <div class="modal-icon" id="modalIcon"></div>
-                    <h2 class="modal-title" id="modalTitle"></h2>
-                    <p class="modal-subtitle" id="modalSubtitle"></p>
+                    <div class="modal-header-text">
+                        <h2 class="modal-title" id="modalTitle"></h2>
+                        <p class="modal-subtitle" id="modalSubtitle"></p>
+                    </div>
                 </div>
+                <div class="modal-header-actions">
+                    <a class="modal-link modal-link-compact" id="modalLinkTop" href="#" target="_blank" rel="noopener noreferrer">
+                        Перейти →
+                    </a>
+                    <button class="modal-close" type="button" aria-label="Закрити" data-modal-close>×</button>
+                </div>
+            </div>
+            <div class="modal-scroll">
                 <div class="modal-body">
                     <section class="modal-section">
-                        <h3 class="modal-section-title">Що це і для чого</h3>
+                        <h3 class="modal-section-title">Опис</h3>
                         <p class="modal-details" id="modalDetails"></p>
                     </section>
                     <section class="modal-section" id="modalFeaturesSection">
-                        <h3 class="modal-section-title">Що вміє цей сервіс</h3>
+                        <h3 class="modal-section-title">Можливості</h3>
                         <ul class="modal-features" id="modalFeatures"></ul>
                     </section>
                 </div>
                 <div class="modal-footer">
                     <a class="modal-link" id="modalLink" href="#" target="_blank" rel="noopener noreferrer">
-                        Перейти до сервісу →
+                        Перейти →
                     </a>
                 </div>
             </div>
